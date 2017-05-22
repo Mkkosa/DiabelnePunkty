@@ -15,7 +15,6 @@ public class AdressFrame extends JFrame {
         setSize(250,250);
         setLocationByPlatform(true);
 
-        setDefaultCloseOperation(0);
         setTitle("Connect with server.");
         setLayout(null);
 
