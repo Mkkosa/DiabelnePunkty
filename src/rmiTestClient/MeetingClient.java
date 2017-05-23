@@ -44,15 +44,7 @@ public class MeetingClient {
                 bis.readLine();
             }
         } catch (Exception ioe) {
-            JFrame frame = new JFrame();
-            frame.setLayout(null);
-            frame.setSize(200,200);
-            frame.setLocationByPlatform(true);
-            frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            JLabel label = new JLabel("Nie połaczono");
-            label.setBounds(0,40,200,50);
-            frame.add(label);
-            frame.setVisible(true);
+            ErrorAddress errorAddress = new ErrorAddress();
         }
     }
 
