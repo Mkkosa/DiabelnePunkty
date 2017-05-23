@@ -1,4 +1,6 @@
-package rmiTestClient;
+package rmiTestClient.setAddres;
+
+import rmiTestClient.setAddres.AddressOkButton;
 
 import javax.swing.*;
 
@@ -34,7 +36,7 @@ public class AdressFrame extends JFrame {
         addressText.setBounds(0,100,150,40);
         add(addressText);
 
-        addressOkButton = new AddressOkButton(addressText);
+        addressOkButton = new AddressOkButton(addressText, this);
         addressOkButton.setBounds(150,100,80,40);
         add(addressOkButton);
     }
@@ -42,5 +44,5 @@ public class AdressFrame extends JFrame {
     public AddressOkButton getAddressOkButton (){
         return addressOkButton;
     }
-
+    public void close (){this.dispose();}
 }
