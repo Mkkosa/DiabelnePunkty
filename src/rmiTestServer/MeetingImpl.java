@@ -16,7 +16,12 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     private static final long serialVersionUID = 1L;
     private Date date = new Date();
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
     private ArrayList nameList = new ArrayList();
+    private ArrayList statList = new ArrayList();
+    private ArrayList locationXList = new ArrayList();
+    private ArrayList locationYList = new ArrayList();
+    private Random random = new Random();
 
     public MeetingImpl() throws RemoteException {
 
@@ -35,9 +40,37 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     }
 
     public int setName(String nickName) throws RemoteException{
+        int id;
         nameList.add(nickName);
-
-
-        return nameList.indexOf(nickName);
+        id = nameList.indexOf(nickName);
+        statList.add(id, 0);
+        locationXList.add(id, random.nextInt(600));
+        locationYList.add(id, random.nextInt(600));
+        return id;
     }
+
+    public int getLocationXListElement (int id) throws RemoteException{
+        return (int) locationXList.get(id);
+    }
+
+    public void setLocationXListElement (int X, int id) throws RemoteException{
+        locationXList.set(id,X);
+    }
+
+    public void setLocationYListElement (int Y, int id) throws RemoteException{
+        locationYList.set(id,Y);
+    }
+
+    public int getCountPlayer () throws  RemoteException{
+        return locationXList.size();
+    }
+
+    public int getLocationYListElement (int id) throws RemoteException{
+        return (int) locationYList.get(id);
+    }
+
+    public int getStatListElement (int id) throws RemoteException{
+        return (int) statList.get(id);
+    }
+
 }

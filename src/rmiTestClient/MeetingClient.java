@@ -49,7 +49,8 @@ public class MeetingClient {
                 System.out.println("Nadano id numer: " + id);
                 System.out.println("Nadano nick: " +nickName);
 
-                MainWindow mainWindow = new MainWindow();
+                MainWindow mainWindow = new MainWindow(id, meeting);
+              //  mainWindow.run();
 
 
 
