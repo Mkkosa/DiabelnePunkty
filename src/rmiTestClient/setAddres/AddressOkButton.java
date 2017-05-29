@@ -16,6 +16,7 @@ public class AddressOkButton extends JButton implements ActionListener {
     Pattern pattern;
     Matcher matcher;
     AdressFrame adressFrame;
+    ResultsWindow resultsWindow;
 
     public AddressOkButton (JTextField textField, AdressFrame adressFrame){
         this.textField = textField;
@@ -51,13 +52,13 @@ public class AddressOkButton extends JButton implements ActionListener {
 
 
             if (octAddress[0]<=255 && octAddress[0]>0 && octAddress[1]<=255 && octAddress[1]>=0 && octAddress[2]<=255 && octAddress[2]>=0 && octAddress[3]<=255 && octAddress[3]>=0 && octAddress[4]<=65000 && octAddress[4]>=0){
-                ResultsWindow resultsWindow = new ResultsWindow(this,"Poprawny adres", true);
+                resultsWindow = new ResultsWindow(this,"Poprawny adres", true);
                 flag = true;
             } else {
-                ResultsWindow resultsWindow = new ResultsWindow(this,"Niepoprawny adres", false);
+                resultsWindow = new ResultsWindow(this,"Niepoprawny adres", false);
             }
         } else {
-            ResultsWindow resultsWindow = new ResultsWindow(this,"Zły format", false);
+            resultsWindow = new ResultsWindow(this,"Zły format", false);
         }
     }
 

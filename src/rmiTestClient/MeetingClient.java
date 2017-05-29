@@ -5,6 +5,7 @@ import java.rmi.Remote;
 import java.rmi.registry.*;
 
 import rmiTestClient.setAddres.AdressFrame;
+import rmiTestClient.setNickName.setNameWindow;
 import rmiTestMeeting.Constatns;
 import rmiTestMeeting.IMeeting;
 
@@ -12,7 +13,8 @@ import javax.swing.*;
 
 public class MeetingClient {
     public static void main(String[] args) {
-        String address;
+        String address, nickName;
+        int id;
 
         try {
 
@@ -25,14 +27,29 @@ public class MeetingClient {
             System.setSecurityManager(new SecurityManager());
             Registry registry = LocateRegistry.getRegistry(address.substring(0,address.length()-5), Integer.parseInt(address.substring(address.length()-4, address.length())));
 
+            adressFrame.close();
             // 2. sprawdzenie zdalnego obiektu w serwerze nazw
 
             Remote remote = registry.lookup(Constatns.OBJECT_ID);
+
             String string = null;
             IMeeting meeting;
             if (remote instanceof IMeeting) {
                 meeting = (IMeeting) remote;
                 // 3. wywołanie zdalnej metody
+
+                setNameWindow setNameWindow = new setNameWindow();
+
+                while (setNameWindow.getFlag()){
+                    Thread.sleep(50);
+                }
+                nickName = setNameWindow.getNickName();
+                id = meeting.setName(nickName);
+                System.out.println("Nadano id numer: " + id);
+                System.out.println("Nadano nick: " +nickName);
+
+
+
                 string = meeting.getDate();
                 System.out.println("Data z systemu zdalnego: " + string);
                 System.out.print("\n\nPodaj Date (dzien-miesiac-rok):");
@@ -44,7 +61,9 @@ public class MeetingClient {
                 bis.readLine();
             }
         } catch (Exception ioe) {
-            ErrorAddress errorAddress = new ErrorAddress();
+            ioe.printStackTrace();
+
+            //ErrorAddress errorAddress = new ErrorAddress();
         }
     }
 

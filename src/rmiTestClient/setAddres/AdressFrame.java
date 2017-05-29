@@ -44,5 +44,8 @@ public class AdressFrame extends JFrame {
     public AddressOkButton getAddressOkButton (){
         return addressOkButton;
     }
-    public void close (){this.dispose();}
+    public void close (){
+        this.dispose();
+        addressOkButton.resultsWindow.dispose();
+    }
 }
