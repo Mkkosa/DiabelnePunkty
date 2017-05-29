@@ -13,7 +13,7 @@ public class setNameWindow extends JFrame {
     public setNameWindow (){
         setSize(300,300);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLocationByPlatform(true);
+        setLocationRelativeTo(null);
         setTitle("set nickname");
         setLayout(null);
 

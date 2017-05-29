@@ -4,6 +4,7 @@ import java.io.*;
 import java.rmi.Remote;
 import java.rmi.registry.*;
 
+import rmiTestClient.main.MainWindow;
 import rmiTestClient.setAddres.AdressFrame;
 import rmiTestClient.setNickName.setNameWindow;
 import rmiTestMeeting.Constatns;
@@ -48,9 +49,11 @@ public class MeetingClient {
                 System.out.println("Nadano id numer: " + id);
                 System.out.println("Nadano nick: " +nickName);
 
+                MainWindow mainWindow = new MainWindow();
 
 
-                string = meeting.getDate();
+
+               /* string = meeting.getDate();
                 System.out.println("Data z systemu zdalnego: " + string);
                 System.out.print("\n\nPodaj Date (dzien-miesiac-rok):");
                 BufferedReader bis = new BufferedReader(new InputStreamReader(System.in));
@@ -58,7 +61,7 @@ public class MeetingClient {
                 meeting.setDate(line);
                 System.out.println("\n\nDate zmieniono !!!!\n\n");
                 System.out.println("Data z systemu zdalnego: " + meeting.getDate() + "\n\n");
-                bis.readLine();
+                bis.readLine();*/
             }
         } catch (Exception ioe) {
             ioe.printStackTrace();
