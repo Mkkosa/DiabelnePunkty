@@ -8,6 +8,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+import com.sun.org.apache.regexp.internal.RE;
 import rmiTestMeeting.IMeeting;
 
 
@@ -21,10 +23,76 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     private ArrayList statList = new ArrayList();
     private ArrayList locationXList = new ArrayList();
     private ArrayList locationYList = new ArrayList();
+    private ArrayList locationPlusX = new ArrayList(10);
+    private ArrayList locationPlusY = new ArrayList(10);
+    private ArrayList locationMinusX = new ArrayList(10);
+    private ArrayList locationMinusY = new ArrayList(10);
+
     private Random random = new Random();
 
     public MeetingImpl() throws RemoteException {
 
+    }
+
+
+    public String getName (int id)throws RemoteException{
+        return (String) nameList.get(id);
+    }
+
+    public int getStat (int id) throws RemoteException{
+        return (int) statList.get(id);
+    }
+
+    public void setStat (int id, int values) throws RemoteException{
+        statList.add(id, values);
+    }
+
+    public int getLocationPlusX (int plusId) throws  RemoteException{
+        return (int) locationPlusX.get(plusId);
+    }
+
+    public int getLocationPlusY (int plusId) throws  RemoteException{
+        return (int) locationPlusY.get(plusId);
+    }
+
+    public int getLocationMinusX (int minusId) throws  RemoteException{
+        return (int) locationMinusX.get(minusId);
+    }
+
+    public int getLocationMinusY (int minusId) throws  RemoteException{
+        return (int) locationMinusY.get(minusId);
+    }
+
+    public void setLocationPlusX (int X, int plusId) throws  RemoteException{
+        locationPlusX.add(plusId,X);
+    }
+
+    public void updateLocationPlusX (int X, int plusId) throws  RemoteException{
+        locationPlusX.set(plusId,X);
+    }
+
+    public void updateLocationPlusY (int Y, int plusId) throws RemoteException{
+        locationPlusY.set(plusId,Y);
+    }
+
+    public void setLocationPlusY (int Y, int plusId) throws  RemoteException{
+        locationPlusY.add(plusId,Y);
+    }
+
+    public void setLocationMinusX (int X, int minusId) throws  RemoteException{
+        locationMinusX.add(minusId,X);
+    }
+
+    public void updateLocationMinusX (int X, int minusId) throws  RemoteException{
+        locationMinusX.set(minusId,X);
+    }
+
+    public void updateLocationMinusY (int Y, int minusId) throws  RemoteException{
+        locationMinusY.set(minusId,Y);
+    }
+
+    public void setLocationMinusY (int Y, int minusId) throws  RemoteException{
+        locationMinusY.add(minusId,Y);
     }
 
     public String getDate() throws RemoteException {
@@ -44,8 +112,8 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         nameList.add(nickName);
         id = nameList.indexOf(nickName);
         statList.add(id, 0);
-        locationXList.add(id, random.nextInt(600));
-        locationYList.add(id, random.nextInt(600));
+        locationXList.add(id, 0);
+        locationYList.add(id, 0);
         return id;
     }
 
@@ -54,15 +122,15 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     }
 
     public void setLocationXListElement (int X, int id) throws RemoteException{
-        locationXList.set(id,X);
+        locationXList.add(id,X);
     }
 
     public void setLocationYListElement (int Y, int id) throws RemoteException{
-        locationYList.set(id,Y);
+        locationYList.add(id,Y);
     }
 
     public int getCountPlayer () throws  RemoteException{
-        return locationXList.size();
+        return nameList.size();
     }
 
     public int getLocationYListElement (int id) throws RemoteException{

@@ -3,6 +3,7 @@ package rmiTestClient;
 import java.io.*;
 import java.rmi.Remote;
 import java.rmi.registry.*;
+import java.util.Random;
 
 import rmiTestClient.main.MainWindow;
 import rmiTestClient.setAddres.AdressFrame;
@@ -16,6 +17,7 @@ public class MeetingClient {
     public static void main(String[] args) {
         String address, nickName;
         int id;
+        Random random =new Random();
 
         try {
 
@@ -38,6 +40,14 @@ public class MeetingClient {
             if (remote instanceof IMeeting) {
                 meeting = (IMeeting) remote;
                 // 3. wywołanie zdalnej metody
+                int i=0;
+                while (i<10){
+                    meeting.setLocationPlusY(random.nextInt(570),i);
+                    meeting.setLocationPlusX(random.nextInt(570),i);
+                    meeting.setLocationMinusX(random.nextInt(570),i);
+                    meeting.setLocationMinusY(random.nextInt(570),i);
+                    i++;
+                }
 
                 setNameWindow setNameWindow = new setNameWindow();
 

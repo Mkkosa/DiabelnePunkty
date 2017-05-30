@@ -16,12 +16,12 @@ public class MainWindow extends JFrame implements KeyListener {
 
     JPanel panel,help,stat;
     JLabel stat1, stat2, stat3;
-    boolean left=false, right=false;
-    JLabel[] players = new JLabel[10];
+    public JLabel[] players = new JLabel[10];
     int id;
     int countPlayers =0;
     IMeeting meeting;
-    int X=0,Y=0;
+    int X=200,Y=100, statistic=0;
+    byte changeVector = 0;
 
     public MainWindow (int id, IMeeting meeting){
         this.id=id;
@@ -35,10 +35,6 @@ public class MainWindow extends JFrame implements KeyListener {
         addKeyListener(this);
 
         setVisible(true);
-    }
-
-    public void run (){
-
     }
 
     public void createJPanels (){
@@ -60,10 +56,12 @@ public class MainWindow extends JFrame implements KeyListener {
             } else {
                 players[i] = new JLabel("X");
             }
-            players[i].setBounds(0,0,20,20);
+            players[i].setBounds(0,0,5,5);
             panel.add(players[i]);
             i++;
         }
+        GamePanel gamePanel = new GamePanel(this, meeting,players);
+        gamePanel.start();
     }
 
     public void createHelp (){
@@ -120,6 +118,9 @@ public class MainWindow extends JFrame implements KeyListener {
         stat.add(stat1);
         stat.add(stat2);
         stat.add(stat3);
+
+        StatPanel statPanel = new StatPanel(this);
+        statPanel.start();
     }
 
     @Override
@@ -132,21 +133,23 @@ public class MainWindow extends JFrame implements KeyListener {
         int key = e.getKeyCode();
         switch(key) {
             case KeyEvent.VK_RIGHT:
-                System.out.println("prawo");
-                setYourLocation();
-                refreshLocations();
+                changeVector = 0;
                 break;
             case KeyEvent.VK_LEFT:
-                left = true;
-                setYourLocation();
-                refreshLocations();
+                changeVector = 1;
                 break;
-            default:
-                setYourLocation();
-                refreshLocations();
+            case KeyEvent.VK_UP:
+                changeVector = 2;
+                break;
+            case KeyEvent.VK_DOWN:
+                changeVector = 3;
                 break;
         }
 
+    }
+
+    public byte getChangeVector (){
+        return changeVector;
     }
 
     public void refreshLocations (){
@@ -179,6 +182,10 @@ public class MainWindow extends JFrame implements KeyListener {
             e.printStackTrace();
         }
 
+    }
+
+    public int getId (){
+        return id;
     }
 
     @Override
