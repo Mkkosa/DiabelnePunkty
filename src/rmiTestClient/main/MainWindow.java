@@ -174,7 +174,11 @@ public class MainWindow extends JFrame implements KeyListener {
                 e.printStackTrace();
             }
             try {
-                players[i].setBounds(meeting.getLocationXListElement(i), meeting.getLocationYListElement(i),20,20);
+                if (i==id){
+                    players[i].setBounds(X,Y,20,20);
+                } else{
+                    players[i].setBounds(meeting.getLocationXListElement(i), meeting.getLocationYListElement(i),20,20);
+                }
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

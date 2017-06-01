@@ -48,18 +48,20 @@ public class GamePanel extends Thread {
 
         while(true){
             try {
-                Thread.sleep(10);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            mainWindow.refreshLocations();
+                mainWindow.refreshLocations();
+
 
             if (mainWindow.getChangeVector()==1){
                 try {
                     mainWindow.X -= speed;
                     if (mainWindow.X<0) mainWindow.X=0;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
+                    System.out.println(mainWindow.id);
                     System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
                     System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();
@@ -73,6 +75,7 @@ public class GamePanel extends Thread {
                     mainWindow.X += speed;
                     if (mainWindow.X>580) mainWindow.X=580;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
+                    System.out.println(mainWindow.id);
                     System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
                     System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();
@@ -87,6 +90,7 @@ public class GamePanel extends Thread {
                     mainWindow.Y -= speed;
                     if (mainWindow.Y<0) mainWindow.Y=0;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
+                    System.out.println(mainWindow.id);
                     System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
                     System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();
@@ -100,6 +104,7 @@ public class GamePanel extends Thread {
                     mainWindow.Y += speed;
                     if (mainWindow.Y>580) mainWindow.Y=580;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
+                    System.out.println(mainWindow.id);
                     System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
                     System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();

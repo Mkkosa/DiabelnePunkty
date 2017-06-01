@@ -35,11 +35,11 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     }
 
 
-    public String getName (int id)throws RemoteException{
+    public synchronized String getName (int id)throws RemoteException{
         return (String) nameList.get(id);
     }
 
-    public int getStat (int id) throws RemoteException{
+    public synchronized int getStat (int id) throws RemoteException{
         return (int) statList.get(id);
     }
 
@@ -47,19 +47,19 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         statList.add(id, values);
     }
 
-    public int getLocationPlusX (int plusId) throws  RemoteException{
+    public synchronized int getLocationPlusX (int plusId) throws  RemoteException{
         return (int) locationPlusX.get(plusId);
     }
 
-    public int getLocationPlusY (int plusId) throws  RemoteException{
+    public synchronized int getLocationPlusY (int plusId) throws  RemoteException{
         return (int) locationPlusY.get(plusId);
     }
 
-    public int getLocationMinusX (int minusId) throws  RemoteException{
+    public synchronized int getLocationMinusX (int minusId) throws  RemoteException{
         return (int) locationMinusX.get(minusId);
     }
 
-    public int getLocationMinusY (int minusId) throws  RemoteException{
+    public synchronized int getLocationMinusY (int minusId) throws  RemoteException{
         return (int) locationMinusY.get(minusId);
     }
 
@@ -95,11 +95,11 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         locationMinusY.add(minusId,Y);
     }
 
-    public String getDate() throws RemoteException {
+    public synchronized String getDate() throws RemoteException {
         return simpleDateFormat.format(date, new StringBuffer(), new FieldPosition(0)).toString();
     }
 
-    public void setDate(String date) throws RemoteException {
+    public synchronized void setDate(String date) throws RemoteException {
         try {
             this.date = (Date) simpleDateFormat.parse(date);
         } catch (ParseException e) {
@@ -117,7 +117,7 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         return id;
     }
 
-    public int getLocationXListElement (int id) throws RemoteException{
+    public synchronized int getLocationXListElement (int id) throws RemoteException{
         return (int) locationXList.get(id);
     }
 
@@ -129,15 +129,15 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         locationYList.add(id,Y);
     }
 
-    public int getCountPlayer () throws  RemoteException{
+    public synchronized int getCountPlayer () throws  RemoteException{
         return nameList.size();
     }
 
-    public int getLocationYListElement (int id) throws RemoteException{
+    public synchronized int getLocationYListElement (int id) throws RemoteException{
         return (int) locationYList.get(id);
     }
 
-    public int getStatListElement (int id) throws RemoteException{
+    public synchronized int getStatListElement (int id) throws RemoteException{
         return (int) statList.get(id);
     }
 
