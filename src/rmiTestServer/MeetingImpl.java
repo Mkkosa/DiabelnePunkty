@@ -43,7 +43,7 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         return (int) statList.get(id);
     }
 
-    public void setStat (int id, int values) throws RemoteException{
+    public synchronized void setStat (int id, int values) throws RemoteException{
         statList.add(id, values);
     }
 
@@ -63,35 +63,35 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         return (int) locationMinusY.get(minusId);
     }
 
-    public void setLocationPlusX (int X, int plusId) throws  RemoteException{
+    public synchronized void setLocationPlusX (int X, int plusId) throws  RemoteException{
         locationPlusX.add(plusId,X);
     }
 
-    public void updateLocationPlusX (int X, int plusId) throws  RemoteException{
+    public synchronized void updateLocationPlusX (int X, int plusId) throws  RemoteException{
         locationPlusX.set(plusId,X);
     }
 
-    public void updateLocationPlusY (int Y, int plusId) throws RemoteException{
+    public synchronized void updateLocationPlusY (int Y, int plusId) throws RemoteException{
         locationPlusY.set(plusId,Y);
     }
 
-    public void setLocationPlusY (int Y, int plusId) throws  RemoteException{
+    public synchronized void setLocationPlusY (int Y, int plusId) throws  RemoteException{
         locationPlusY.add(plusId,Y);
     }
 
-    public void setLocationMinusX (int X, int minusId) throws  RemoteException{
+    public synchronized void setLocationMinusX (int X, int minusId) throws  RemoteException{
         locationMinusX.add(minusId,X);
     }
 
-    public void updateLocationMinusX (int X, int minusId) throws  RemoteException{
+    public synchronized void updateLocationMinusX (int X, int minusId) throws  RemoteException{
         locationMinusX.set(minusId,X);
     }
 
-    public void updateLocationMinusY (int Y, int minusId) throws  RemoteException{
+    public synchronized void updateLocationMinusY (int Y, int minusId) throws  RemoteException{
         locationMinusY.set(minusId,Y);
     }
 
-    public void setLocationMinusY (int Y, int minusId) throws  RemoteException{
+    public synchronized void setLocationMinusY (int Y, int minusId) throws  RemoteException{
         locationMinusY.add(minusId,Y);
     }
 
@@ -107,7 +107,7 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         }
     }
 
-    public int setName(String nickName) throws RemoteException{
+    public synchronized int setName(String nickName) throws RemoteException{
         int id;
         nameList.add(nickName);
         id = nameList.indexOf(nickName);
@@ -121,11 +121,11 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         return (int) locationXList.get(id);
     }
 
-    public void setLocationXListElement (int X, int id) throws RemoteException{
+    public synchronized void setLocationXListElement (int X, int id) throws RemoteException{
         locationXList.add(id,X);
     }
 
-    public void setLocationYListElement (int Y, int id) throws RemoteException{
+    public synchronized void setLocationYListElement (int Y, int id) throws RemoteException{
         locationYList.add(id,Y);
     }
 
