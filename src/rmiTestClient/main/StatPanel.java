@@ -36,7 +36,7 @@ public class StatPanel extends Thread {
                 }
                 i=0;
                 while (i<10 && mainWindow.meeting.getCountPlayer()>i){
-                    if (second<mainWindow.meeting.getStat(i)&&first!=second){
+                    if (second<mainWindow.meeting.getStat(i)&&first!=mainWindow.meeting.getStat(i)){
                         second=mainWindow.meeting.getStat(i);
                         idSecond=i;
                     }
@@ -44,7 +44,7 @@ public class StatPanel extends Thread {
                 }
                 i=0;
                 while (i<10 && mainWindow.meeting.getCountPlayer()>i){
-                    if (third<mainWindow.meeting.getStat(i)&&first!=third&&second!=third){
+                    if (third<mainWindow.meeting.getStat(i) && mainWindow.meeting.getStat(i)!=second && mainWindow.meeting.getStat(i)!=first){
                         third=mainWindow.meeting.getStat(i);
                         idThird=i;
                     }

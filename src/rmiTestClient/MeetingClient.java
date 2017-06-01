@@ -28,7 +28,9 @@ public class MeetingClient {
             address=adressFrame.getAddressOkButton().getAddress();
             // 1. ustawienie managera bezpieczeństwa
             System.setSecurityManager(new SecurityManager());
+            System.out.println(Integer.parseInt(address.substring(address.length()-4, address.length())));
             Registry registry = LocateRegistry.getRegistry(address.substring(0,address.length()-5), Integer.parseInt(address.substring(address.length()-4, address.length())));
+
 
             adressFrame.close();
             // 2. sprawdzenie zdalnego obiektu w serwerze nazw

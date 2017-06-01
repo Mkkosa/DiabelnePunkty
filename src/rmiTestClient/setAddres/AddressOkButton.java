@@ -42,16 +42,6 @@ public class AddressOkButton extends JButton implements ActionListener {
                         oct4port[j] = Integer.parseInt(retval1);
                         j++;
                     }
-                } else  if (retval.startsWith(":",2)) {
-                    for (String retval1 : retval.split(":")) {
-                        oct4port[j] = Integer.parseInt(retval1);
-                        j++;
-                    }
-                } else  if (retval.startsWith(":",3)) {
-                    for (String retval1 : retval.split(":")) {
-                        oct4port[j] = Integer.parseInt(retval1);
-                        j++;
-                    }
                 } else {
                     octAddress[i] = Integer.parseInt(retval);
                 }
