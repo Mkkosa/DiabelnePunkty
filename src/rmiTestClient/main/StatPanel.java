@@ -24,31 +24,39 @@ public class StatPanel extends Thread {
             }
             try {
                 i=0;
-                while (i<10 && mainWindow.meeting.getCountPlayer()>=1){
+                first =0;
+                second =0;
+                third=0;
+                while (i<10 && mainWindow.meeting.getCountPlayer()>i){
                     if (first<mainWindow.meeting.getStat(i)){
                         first=mainWindow.meeting.getStat(i);
                         idFirst=i;
                     }
+                    i++;
                 }
                 i=0;
-                while (i<10 && mainWindow.meeting.getCountPlayer()>=2){
+                while (i<10 && mainWindow.meeting.getCountPlayer()>i){
                     if (second<mainWindow.meeting.getStat(i)&&first!=second){
                         second=mainWindow.meeting.getStat(i);
                         idSecond=i;
                     }
+                    i++;
                 }
                 i=0;
-                while (i<10 && mainWindow.meeting.getCountPlayer()>=3){
-                    if (third<mainWindow.meeting.getStat(i)&&first!=third&&second==third){
+                while (i<10 && mainWindow.meeting.getCountPlayer()>i){
+                    if (third<mainWindow.meeting.getStat(i)&&first!=third&&second!=third){
                         third=mainWindow.meeting.getStat(i);
                         idThird=i;
                     }
+                    i++;
                 }
-                if (mainWindow.meeting.getCountPlayer() >= 1) {
+                if (mainWindow.meeting.getCountPlayer()>=1) {
                     mainWindow.stat1.setText("1. " + mainWindow.meeting.getName(idFirst) + ":" + first + " pkt");
-                    if (mainWindow.meeting.getCountPlayer() >= 2) {
+                    mainWindow.stat1.setVisible(true);
+                    if (mainWindow.meeting.getCountPlayer()>=2) {
                         mainWindow.stat2.setText("2. " + mainWindow.meeting.getName(idSecond) + ":" + second + " pkt");
-                        if (mainWindow.meeting.getCountPlayer() >= 3)
+                        mainWindow.stat2.setVisible(true);
+                        if (mainWindow.meeting.getCountPlayer()>=3)
                         mainWindow.stat3.setText("3. " + mainWindow.meeting.getName(idThird) + ":" + third + " pkt");
 
                     }
