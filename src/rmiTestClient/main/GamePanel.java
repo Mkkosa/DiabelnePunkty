@@ -60,6 +60,8 @@ public class GamePanel extends Thread {
                     mainWindow.X -= speed;
                     if (mainWindow.X<0) mainWindow.X=0;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
+                    System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
+                    System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();
                     minuspkt();
                 } catch (RemoteException e) {
@@ -71,6 +73,8 @@ public class GamePanel extends Thread {
                     mainWindow.X += speed;
                     if (mainWindow.X>580) mainWindow.X=580;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
+                    System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
+                    System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();
                     minuspkt();
 
@@ -83,6 +87,8 @@ public class GamePanel extends Thread {
                     mainWindow.Y -= speed;
                     if (mainWindow.Y<0) mainWindow.Y=0;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
+                    System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
+                    System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();
                     minuspkt();
                 } catch (RemoteException e) {
@@ -94,6 +100,8 @@ public class GamePanel extends Thread {
                     mainWindow.Y += speed;
                     if (mainWindow.Y>580) mainWindow.Y=580;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
+                    System.out.println("x:"+meeting.getLocationXListElement(mainWindow.id));
+                    System.out.println("y:"+meeting.getLocationYListElement(mainWindow.id)+"\n");
                     pluspkt();
                     minuspkt();
                 } catch (RemoteException e) {

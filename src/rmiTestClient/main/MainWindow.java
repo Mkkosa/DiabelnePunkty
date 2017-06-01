@@ -33,6 +33,13 @@ public class MainWindow extends JFrame implements KeyListener {
         setTitle("Main game");
         createJPanels();
         addKeyListener(this);
+        try {
+            meeting.setLocationXListElement(X,id);
+            meeting.setLocationYListElement(Y,id);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
 
         setVisible(true);
     }
