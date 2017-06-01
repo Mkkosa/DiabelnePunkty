@@ -107,6 +107,7 @@ public class GamePanel extends Thread {
             }
             pluspkt();
             minuspkt();
+            refresh();
         }
     }
     public int getYourLocationX (){
@@ -172,6 +173,24 @@ public class GamePanel extends Thread {
                         flag =false;
                     }
                 }
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            i++;
+        }
+    }
+
+    public void refresh(){
+        int i =0;
+        while (i<10){
+            try {
+                plus[i].setBounds(meeting.getLocationPlusX(i),meeting.getLocationPlusY(i),10,10);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                minus[i].setBounds(meeting.getLocationMinusX(i),meeting.getLocationMinusY(i),10,10);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
