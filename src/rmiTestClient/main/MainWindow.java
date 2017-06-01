@@ -36,6 +36,7 @@ public class MainWindow extends JFrame implements KeyListener {
         try {
             meeting.setLocationXListElement(X,id);
             meeting.setLocationYListElement(Y,id);
+            //hg
         } catch (RemoteException e) {
             e.printStackTrace();
         }
