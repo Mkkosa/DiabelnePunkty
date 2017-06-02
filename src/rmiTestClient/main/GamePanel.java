@@ -61,6 +61,7 @@ public class GamePanel extends Thread {
                     mainWindow.X -= speed;
                     if (mainWindow.X<0) mainWindow.X=0;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
+                    meeting.setLocationYListElement(mainWindow.Y,mainWindow.id);
                     System.out.println(mainWindow.id);
                     System.out.println("x:"+mainWindow.X);
                     System.out.println("y:"+mainWindow.Y+"\n");
@@ -73,6 +74,7 @@ public class GamePanel extends Thread {
                     mainWindow.X += speed;
                     if (mainWindow.X>580) mainWindow.X=580;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
+                    meeting.setLocationYListElement(mainWindow.Y,mainWindow.id);
                     System.out.println(mainWindow.id);
                     System.out.println("x:"+mainWindow.X);
                     System.out.println("y:"+mainWindow.Y+"\n");
@@ -86,6 +88,7 @@ public class GamePanel extends Thread {
                     mainWindow.Y -= speed;
                     if (mainWindow.Y<0) mainWindow.Y=0;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
+                    meeting.setLocationXListElement(mainWindow.X,mainWindow.id);
                     System.out.println(mainWindow.id);
                     System.out.println("x:"+mainWindow.X);
                     System.out.println("y:"+mainWindow.Y+"\n");
@@ -98,6 +101,7 @@ public class GamePanel extends Thread {
                     mainWindow.Y += speed;
                     if (mainWindow.Y>580) mainWindow.Y=580;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
+                    meeting.setLocationXListElement(mainWindow.X,mainWindow.id);
                     System.out.println(mainWindow.id);
                     System.out.println("x:"+mainWindow.X);
                     System.out.println("y:"+mainWindow.Y+"\n");

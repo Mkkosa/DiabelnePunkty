@@ -42,14 +42,14 @@ public class MeetingClient {
             if (remote instanceof IMeeting) {
                 meeting = (IMeeting) remote;
                 // 3. wywołanie zdalnej metody
-               // int i=0;
-               /* while (i<10){
+                int i=0;
+                while (i<10){
                     meeting.setLocationPlusY(random.nextInt(570),i);
                     meeting.setLocationPlusX(random.nextInt(570),i);
                     meeting.setLocationMinusX(random.nextInt(570),i);
                     meeting.setLocationMinusY(random.nextInt(570),i);
                     i++;
-                }*/
+                }
 
                 setNameWindow setNameWindow = new setNameWindow();
 

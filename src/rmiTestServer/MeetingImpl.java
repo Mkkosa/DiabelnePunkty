@@ -122,11 +122,11 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     }
 
     public synchronized void setLocationXListElement (int X, int id) throws RemoteException{
-        locationXList.add(id,X);
+        locationXList.set(id,X);
     }
 
     public synchronized void setLocationYListElement (int Y, int id) throws RemoteException{
-        locationYList.add(id,Y);
+        locationYList.set(id,Y);
     }
 
     public synchronized int getCountPlayer () throws  RemoteException{
