@@ -44,7 +44,7 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     }
 
     public synchronized void setStat (int id, int values) throws RemoteException{
-        statList.add(id, values);
+        statList.set(id, values);
     }
 
     public synchronized int getLocationPlusX (int plusId) throws  RemoteException{

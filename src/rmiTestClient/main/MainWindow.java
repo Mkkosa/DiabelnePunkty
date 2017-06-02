@@ -83,10 +83,11 @@ public class MainWindow extends JFrame implements KeyListener {
         tittle.setBounds(80,10,100,30);
         help.add(tittle);
 
-        JLabel help1 = new JLabel("<-  - skrec w lewo");
-        JLabel help2 = new JLabel("->  - skrec w prawo");
-        help1.setBounds(60,60,100,40);
-        help2.setBounds(60,100,120,40);
+
+        JLabel help1 = new JLabel( "<- , -> - rusz lewo, prawo");
+        JLabel help2 = new JLabel( "^ , v - rusz gora, dol");
+        help1.setBounds(60,60,160,40);
+        help2.setBounds(60,100,160,40);
         help.add(help1);
         help.add(help2);
 
