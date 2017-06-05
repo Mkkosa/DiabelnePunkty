@@ -4,17 +4,12 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface IMeeting extends Remote {
-    String getDate() throws RemoteException;
-
-    void setDate(String data) throws RemoteException;
 
     int setName(String nickName) throws RemoteException;
 
     int getLocationXListElement(int id) throws RemoteException;
 
     int getLocationYListElement(int id) throws RemoteException;
-
-    int getStatListElement(int id) throws RemoteException;
 
     int getCountPlayer() throws  RemoteException;
 
@@ -51,4 +46,16 @@ public interface IMeeting extends Remote {
     void updateLocationMinusY(int Y, int minusId) throws  RemoteException;
 
     String getName(int id)throws RemoteException;
+
+    int getBonusX() throws RemoteException;
+
+    int getBonusY() throws RemoteException;
+
+    void setBonusX(int X) throws RemoteException;
+
+    void setBonusY(int Y) throws RemoteException;
+
+    int getVector(int i) throws RemoteException;
+
+    void setVector(int vector, int id) throws RemoteException;
 }

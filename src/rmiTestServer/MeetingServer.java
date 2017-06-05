@@ -5,6 +5,8 @@ import java.util.Random;
 
 import rmiTestMeeting.Constatns;
 
+import javax.swing.*;
+
 public class MeetingServer {
     public static void main(String[] args) throws Exception {
         Random random=new Random();
@@ -21,5 +23,7 @@ public class MeetingServer {
             impl.setLocationMinusY(random.nextInt(570),i);
             i++;
         }
+        ServerWindow serverWindow = new ServerWindow();
     }
+
 }

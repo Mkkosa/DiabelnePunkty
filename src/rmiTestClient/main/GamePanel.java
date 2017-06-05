@@ -18,6 +18,7 @@ public class GamePanel extends Thread {
     JLabel[] plus = new JLabel[10];
     JLabel[] minus = new JLabel[10];
     Random random = new Random();
+    JLabel bonus;
 
     public GamePanel (MainWindow mainWindow, IMeeting meeting, JLabel[] players){
         this.mainWindow=mainWindow;
@@ -43,6 +44,14 @@ public class GamePanel extends Thread {
             }
             i++;
         }
+        bonus = new JLabel();
+        bonus.setIcon(new ImageIcon(getClass().getResource("resource/bonus.png")));
+        try {
+            bonus.setBounds(meeting.getBonusX(),meeting.getBonusY(),15,15);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        mainWindow.panel.add(bonus);
 
     }
 
@@ -57,67 +66,39 @@ public class GamePanel extends Thread {
 
                 mainWindow.refreshLocations();
 
-
-            if (mainWindow.getChangeVector()==1){
-                try {
+            switch (mainWindow.getChangeVector()){
+                case 1:
                     mainWindow.X -= speed;
                     if (mainWindow.X<0) mainWindow.X=580;
-                    meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
-                    meeting.setLocationYListElement(mainWindow.Y,mainWindow.id);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-
-            } else if (mainWindow.getChangeVector()==0){
-                try {
+                    break;
+                case 0:
                     mainWindow.X += speed;
                     if (mainWindow.X>580) mainWindow.X=0;
-                    meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
-                    meeting.setLocationYListElement(mainWindow.Y,mainWindow.id);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-
-            } else if (mainWindow.getChangeVector()==2){
-                try {
+                    break;
+                case 2:
                     mainWindow.Y -= speed;
                     if (mainWindow.Y<0) mainWindow.Y=580;
-                    meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
-                    meeting.setLocationXListElement(mainWindow.X,mainWindow.id);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
-
-            } else if (mainWindow.getChangeVector()==3){
-                try {
+                    break;
+                case 3:
                     mainWindow.Y += speed;
                     if (mainWindow.Y>580) mainWindow.Y=0;
-                    meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
-                    meeting.setLocationXListElement(mainWindow.X,mainWindow.id);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+                    break;
             }
+            setLocation();
+            bonuspkt();
             pluspkt();
             minuspkt();
             refresh();
         }
     }
-    public int getYourLocationX (){
-        try {
-            return meeting.getLocationXListElement(mainWindow.getId());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
 
-    public int getYourLocationY (){
+    public void setLocation (){
+
         try {
-            return meeting.getLocationYListElement(mainWindow.getId());
+            meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
+            meeting.setLocationXListElement(mainWindow.X,mainWindow.id);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return 0;
         }
     }
 
@@ -143,6 +124,29 @@ public class GamePanel extends Thread {
                 e.printStackTrace();
             }
             i++;
+        }
+    }
+
+    public void bonuspkt(){
+        int values,X,Y;
+
+        try {
+            if(mainWindow.X<=meeting.getBonusX()+10 && mainWindow.X>=meeting.getBonusX()-10){
+                if(mainWindow.Y<=meeting.getBonusY()+10 && mainWindow.Y>=meeting.getBonusY()-10){
+                    values = random.nextInt(200)-100;
+                    mainWindow.statistic = meeting.getStat(mainWindow.id);
+                    mainWindow.statistic += values;
+                    meeting.setStat(mainWindow.id,mainWindow.statistic);
+                    X = random.nextInt(580);
+                    Y = random.nextInt(580);
+                    meeting.setBonusX(X);
+                    meeting.setBonusY(Y);
+                    bonus.setBounds(meeting.getBonusX(),meeting.getBonusY(),15,15);
+                }
+
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 

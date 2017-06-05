@@ -24,9 +24,9 @@ public class StatPanel extends Thread {
             }
             try {
                 i=0;
-                first =0;
-                second =0;
-                third=0;
+                first =-10000;
+                second =-10000;
+                third=-10000;
                 while (i<10 && mainWindow.meeting.getCountPlayer()>i){
                     if (first<mainWindow.meeting.getStat(i)){
                         first=mainWindow.meeting.getStat(i);
