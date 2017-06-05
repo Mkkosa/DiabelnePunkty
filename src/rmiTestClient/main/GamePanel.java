@@ -25,14 +25,16 @@ public class GamePanel extends Thread {
         this.players=players;
         int i =0;
         while (i<10){
-            plus[i] = new JLabel("1");
+            plus[i] = new JLabel();
+            plus[i].setIcon(new ImageIcon(getClass().getResource("resource/plus.png")));
             mainWindow.panel.add(plus[i]);
             try {
                 plus[i].setBounds(meeting.getLocationPlusX(i),meeting.getLocationPlusY(i),10,10);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
-            minus[i] = new JLabel("2");
+            minus[i] = new JLabel();
+            minus[i].setIcon(new ImageIcon(getClass().getResource("resource/minus.png")));
             mainWindow.panel.add(minus[i]);
             try {
                 minus[i].setBounds(meeting.getLocationMinusX(i),meeting.getLocationMinusY(i),10,10);
@@ -59,7 +61,7 @@ public class GamePanel extends Thread {
             if (mainWindow.getChangeVector()==1){
                 try {
                     mainWindow.X -= speed;
-                    if (mainWindow.X<0) mainWindow.X=0;
+                    if (mainWindow.X<0) mainWindow.X=580;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.id);
                 } catch (RemoteException e) {
@@ -69,7 +71,7 @@ public class GamePanel extends Thread {
             } else if (mainWindow.getChangeVector()==0){
                 try {
                     mainWindow.X += speed;
-                    if (mainWindow.X>580) mainWindow.X=580;
+                    if (mainWindow.X>580) mainWindow.X=0;
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.getId());
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.id);
                 } catch (RemoteException e) {
@@ -79,7 +81,7 @@ public class GamePanel extends Thread {
             } else if (mainWindow.getChangeVector()==2){
                 try {
                     mainWindow.Y -= speed;
-                    if (mainWindow.Y<0) mainWindow.Y=0;
+                    if (mainWindow.Y<0) mainWindow.Y=580;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.id);
                 } catch (RemoteException e) {
@@ -89,7 +91,7 @@ public class GamePanel extends Thread {
             } else if (mainWindow.getChangeVector()==3){
                 try {
                     mainWindow.Y += speed;
-                    if (mainWindow.Y>580) mainWindow.Y=580;
+                    if (mainWindow.Y>580) mainWindow.Y=0;
                     meeting.setLocationYListElement(mainWindow.Y,mainWindow.getId());
                     meeting.setLocationXListElement(mainWindow.X,mainWindow.id);
                 } catch (RemoteException e) {

@@ -108,12 +108,21 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     }
 
     public synchronized int setName(String nickName) throws RemoteException{
-        int id;
-        nameList.add(nickName);
-        id = nameList.indexOf(nickName);
-        statList.add(id, 0);
-        locationXList.add(id, 0);
-        locationYList.add(id, 0);
+        int id=0;
+        boolean flag = true;
+        do {
+            if (nameList.indexOf(nickName) >= 0 && nameList.indexOf(nickName) < 10) {
+                nickName = nickName + "a";
+            } else {
+                nameList.add(nickName);
+                id = nameList.indexOf(nickName);
+                statList.add(id, 0);
+                locationXList.add(id, 0);
+                locationYList.add(id, 0);
+                flag = false;
+
+            }
+        } while (flag);
         return id;
     }
 

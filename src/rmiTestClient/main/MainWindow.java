@@ -3,7 +3,6 @@ package rmiTestClient.main;
 import rmiTestMeeting.IMeeting;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -60,11 +59,14 @@ public class MainWindow extends JFrame implements KeyListener {
         int i =0;
         while (i<10){
             if (id==i){
-                players[i] = new JLabel("O");
+                players[i] = new JLabel();
+                players[i].setBounds(-10,-10,10,10);
+                players[i].setIcon(new ImageIcon(getClass().getResource("resource/you.png")));
             } else {
-                players[i] = new JLabel("X");
+                players[i] = new JLabel();
+                players[i].setBounds(-10,-10,10,10);
+                players[i].setIcon(new ImageIcon(getClass().getResource("resource/other.png")));
             }
-            players[i].setBounds(0,0,5,5);
             panel.add(players[i]);
             i++;
         }
@@ -84,22 +86,26 @@ public class MainWindow extends JFrame implements KeyListener {
         help.add(tittle);
 
 
-        JLabel help1 = new JLabel( "<- , -> - rusz lewo, prawo");
-        JLabel help2 = new JLabel( "^ , v - rusz gora, dol");
+        JLabel help1 = new JLabel( "- poruszanie");
+        help1.setIcon(new ImageIcon(getClass().getResource("resource/ruch.png")));
         help1.setBounds(60,60,160,40);
-        help2.setBounds(60,100,160,40);
+        //help2.setBounds(60,100,160,40);
         help.add(help1);
-        help.add(help2);
+        //help.add(help2);
 
-        JLabel help3 = new JLabel("1 - punkty dodatnie");
-        JLabel help4 = new JLabel("2 - punkty ujemne");
+        JLabel help3 = new JLabel("- punkty dodatnie");
+        help3.setIcon(new ImageIcon(getClass().getResource("resource/plus.png")));
+        JLabel help4 = new JLabel("- punkty ujemne");
+        help4.setIcon(new ImageIcon(getClass().getResource("resource/minus.png")));
         help3.setBounds(60,140,120,40);
         help4.setBounds(60,180,100,40);
         help.add(help3);
         help.add(help4);
 
-        JLabel help5 = new JLabel("X - przeciwnicy");
-        JLabel help6 = new JLabel("O - Ty");
+        JLabel help5 = new JLabel("- przeciwnicy");
+        help5.setIcon(new ImageIcon(getClass().getResource("resource/other.png")));
+        JLabel help6 = new JLabel("- Ty");
+        help6.setIcon(new ImageIcon(getClass().getResource("resource/you.png")));
         help5.setBounds(60,220,100,40);
         help6.setBounds(60,260,100,40);
         help.add(help5);
