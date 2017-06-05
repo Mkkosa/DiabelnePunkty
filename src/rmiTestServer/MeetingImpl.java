@@ -26,6 +26,7 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
     }
 
     public int getVector(int i) throws RemoteException{
+        //
         return (int) vectorPlayers.get(i);
     }
 
